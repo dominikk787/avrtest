@@ -1,0 +1,45 @@
+#include <avr/io.h>
+
+#define LCD_E_PIN PORTB7
+#define LCD_RS_PIN PORTB6
+#define LCD_E_PORT PORTB
+#define LCD_RS_PORT PORTB
+#define LCD_E_DDR DDRB
+#define LCD_RS_DDR DDRB
+
+#define LCD_E_LOW LCD_E_PORT &= ~_BV(LCD_E_PIN)
+#define LCD_RS_LOW LCD_RS_PORT &= ~_BV(LCD_RS_PIN)
+#define LCD_E_HIGH LCD_E_PORT |= _BV(LCD_E_PIN)
+#define LCD_RS_HIGH LCD_RS_PORT |= _BV(LCD_RS_PIN)
+
+#define LCD_DATA_PORT PORTD
+#define LCD_DATA_INPUT PIND
+#define LCD_DATA_DDR DDRD
+
+#define BITS4
+
+#define LCD_COMMAND_CLEAR 0x01
+#define LCD_COMMAND_RETURN_HOME 0x02
+#define LCD_COMMAND_ENTRY_MODE_SET 0x04
+#define LCD_COMMAND_ON_OFF 0x08
+#define LCD_COMMAND_SHIFT 0x10
+#define LCD_COMMAND_FUNCTION_SET 0x20
+#define LCD_COMMAND_SET_CGRAM_ADDRESS 0x40
+#define LCD_COMMAND_SET_DDRAM_ADDRESS 0x80
+
+#define LCD_PARAM_ENTRY_MODE_SET_SHIFT 0x01
+#define LCD_PARAM_ENTRY_MODE_SET_INCREMENT 0x02
+#define LCD_PARAM_ON_OFF_BLINK 0x01
+#define LCD_PARAM_ON_OFF_CURSOR 0x02
+#define LCD_PARAM_ON_OFF_DISPLAY 0x04
+#define LCD_PARAM_SHIFT_RIGHT 0x04
+#define LCD_PARAM_SHIFT_DISPLAY 0x08
+#define LCD_PARAM_FUNCTION_SET_5X10 0x04
+#define LCD_PARAM_FUNCTION_SET_2LINES 0x08
+#define LCD_PARAM_FUNCTION_SET_8BIT 0x10
+
+void lcdWriteCommand(uint8_t command);
+void lcdWriteData(uint8_t data);
+void lcdInit();
+void lcdString(char str[]);
+void lcdGotoXY(uint8_t x, uint8_t y);
