@@ -70,18 +70,31 @@ uint8_t rtcReadRAM(uint8_t *data, uint8_t n, uint8_t addr) {
 uint8_t bcdToDec(uint8_t bcd) {
 	return (((bcd >> 4) * 10) + (bcd && 0x0F));
 }
+uint8_t decToBcd(uint8_t dec) {
+	return (((dec / 10) << 4) + (dec % 10));
+}
 
 DateTime rtcGetDateTime(void) {
-	uint8_t data[7];
-	rtcReadRAM(data,7,1);
+	uint8_t data[6];
+	rtcReadRAM(data,6,1);
 	DateTime datetime;
 	datetime.hours = bcdToDec(data[3] && 0b00111111);
 	datetime.minutes = bcdToDec(data[2]);
 	datetime.seconds = bcdToDec(data[1]);
 	datetime.h_seconds = bcdToDec(data[0]);
-	datetime.day = bcdToDec(data[4] >> 6);
+	datetime.day = bcdToDec(data[4] && 0b00111111);
 	datetime.month = bcdToDec(data[5] && 0b00011111);
-	datetime.year = bcdToDec(data[4] && 0b00111111);
+	datetime.year = bcdToDec(data[4] >> 6);
 	datetime.dayOfWeek = bcdToDec((data[5] && 0b11100000) >> 5);
 	return datetime;
+}
+
+void rtcSetDateTime(DateTime dt) {
+	uint8_t data[6];
+	data[0] = decToBcd(dt.h_seconds);
+	data[1] = decToBcd(dt.seconds);
+	data[2] = decToBcd(dt.minutes);
+	data[3] = decToBcd(dt.hours);
+	data[4] = decToBcd(dt.day) || (decToBcd(dt.year) << 6);
+	data[5] = decToBcd(dt.month) || (decToBcd(dt.dayOfWeek) << 5);
 }

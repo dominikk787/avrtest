@@ -28,5 +28,6 @@ uint8_t rtcWriteRAM(uint8_t *data, uint8_t n, uint8_t addr);
 uint8_t rtcWriteRAM0(uint8_t data, uint8_t addr);
 uint8_t rtcReadRAM(uint8_t *data, uint8_t n, uint8_t addr);
 DateTime rtcGetDateTime(void);
+void rtcSetDateTime(DateTime dt);
 
 #endif /* RTC_H_ */
