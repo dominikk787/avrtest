@@ -19,6 +19,7 @@
 #include <avr/io.h>
 #include "USART.h"
 #include <util/setbaud.h>
+#include <stdio.h>
 
 void initUSART(void) {                                /* requires BAUD */
   UBRR0H = UBRRH_VALUE;                        /* defined in setbaud.h */
@@ -76,7 +77,7 @@ void readString(char myString[], uint8_t maxLength) {
 
 void printByte(uint8_t byte) {
               /* Converts a byte to a string of decimal text, sends it */
-  //transmitByte('0' + (byte / 100));                        /* Hundreds */
+  transmitByte('0' + (byte / 100));                        /* Hundreds */
   transmitByte('0' + ((byte / 10) % 10));                      /* Tens */
   transmitByte('0' + (byte % 10));                             /* Ones */
 }
@@ -134,4 +135,17 @@ uint8_t getNumber(void) {
     transmitByte(thisChar);                                    /* echo */
   } while (thisChar != '\r');                     /* until type return */
   return (100 * (hundreds - '0') + 10 * (tens - '0') + ones - '0');
+}
+
+void initUSARTstd(void) {
+	fdevopen(&usartPut, &usartGet);
+}
+
+int usartPut(char c, FILE * file) {
+	transmitByte(c);
+	return 0;
+}
+
+int usartGet(FILE * file) {
+	return receiveByte();
 }

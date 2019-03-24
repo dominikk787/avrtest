@@ -4,6 +4,8 @@
      the bit-rate multiplier.
  */
 
+#include <stdio.h>
+
 #ifndef BAUD                          /* if not defined in Makefile... */
 #define BAUD  9600                     /* set a safe default baud rate */
 #endif
@@ -16,6 +18,10 @@
    calculates the bit-clock multiplier,
    and configures the hardware USART                   */
 void initUSART(void);
+
+void initUSARTstd(void);
+int usartPut(char c, FILE * file);
+int usartGet(FILE * file);
 
 /* Blocking transmit and receive functions.
    When you call receiveByte() your program will hang until

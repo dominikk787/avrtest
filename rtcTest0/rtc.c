@@ -23,10 +23,10 @@ uint8_t rtcInit(void) {
 			return 0;
 		} else {
 			rtcWriteRAM0(0b00000011,0);
-			return 2;
+			return data;
 		}
 	}
-	return 1;
+	return 254;
 }
 
 uint8_t rtcWriteRAM(uint8_t *data, uint8_t n, uint8_t addr) {
@@ -76,7 +76,7 @@ uint8_t decToBcd(uint8_t dec) {
 
 DateTime rtcGetDateTime(void) {
 	uint8_t data[6];
-	rtcReadRAM(data,6,1);
+	rtcReadRAM(data,6 ,1);
 	DateTime datetime;
 	datetime.hours = bcdToDec(data[3] && 0b00111111);
 	datetime.minutes = bcdToDec(data[2]);
@@ -97,4 +97,58 @@ void rtcSetDateTime(DateTime dt) {
 	data[3] = decToBcd(dt.hours);
 	data[4] = decToBcd(dt.day) || (decToBcd(dt.year) << 6);
 	data[5] = decToBcd(dt.month) || (decToBcd(dt.dayOfWeek) << 5);
+	rtcWriteRAM(data, 6, 1);
+}
+
+DateTime rtcValidateDateTime(DateTime dt) {
+	if(dt.h_seconds > 99) {
+		dt.seconds += dt.h_seconds / 100;
+		dt.h_seconds %= 100;
+	}
+	if(dt.seconds > 59) {
+		dt.minutes += dt.seconds / 60;
+		dt.seconds %= 60;
+	}
+	if(dt.minutes > 59) {
+		dt.hours += dt.minutes / 60;
+		dt.minutes %= 60;
+	}
+	if(dt.hours > 23) {
+		dt.day += dt.hours / 24;
+		dt.hours %= 24;
+	}
+	dt.month -= 1;
+	if(dt.month > 11) {
+		dt.year += dt.month / 12;
+		dt.month %= 12;
+	}
+	dt.month++;
+	if(dt.year > 3) {
+		dt.year %= 4;
+	}
+	const uint8_t dayPerMonth[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30};
+	dt.day--;
+	while(dt.day >= (dayPerMonth[dt.month - 1])) {
+		if(dt.month == 2) {
+			if(dt.year != 0) {
+				if(dt.day < 28)
+					break;
+				else {
+					dt.day -= 28;
+					dt.month++;
+					continue;
+				}
+			}
+		}
+		dt.day -= dayPerMonth[dt.month - 1];
+		if(dt.month > 11) {
+			dt.year += dt.month / 12;
+			dt.month %= 12;
+		}
+		dt.month++;
+		if(dt.year > 3) {
+			dt.year %= 4;
+		}
+	}
+	return dt;
 }
