@@ -10,7 +10,7 @@
 #define SIN_H_
 #include <avr/pgmspace.h>
 
-const uint8_t PROGMEM sin[180] = {
+const uint8_t PROGMEM sintab[180] = {
 	0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 7, 8, 8, 9, 
 	10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 26, 27, 28, 
 	30, 31, 33, 34, 36, 37, 39, 41, 42, 44, 46, 47, 49, 51, 53, 54, 56, 
@@ -41,7 +41,7 @@ static uint8_t minuteToTable(uint16_t minuteOfDay) {
 }
 
 static uint8_t readTable(uint8_t addr) {
-	return pgm_read_byte(&sin[addr]);
+	return pgm_read_byte(&sintab[addr]);
 }
 
 #endif /* SIN_H_ */

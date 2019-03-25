@@ -11,6 +11,8 @@
 #include "i2c.h"
 #include "USART.h"
 #include "sin.h"
+#include "1wire.h"
+#include "lcd.h"
 
 #define decToNum(a, b) ((a * 10) + b)
 
@@ -24,6 +26,17 @@ volatile uint16_t rok;
 uint16_t dayOfYear(uint8_t day, uint8_t month);
 uint16_t minuteOfDay(uint8_t minutes, uint8_t hours);
 
+uint8_t cChHeat[8] = {
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111
+};
+
 int main(void)
 {
     initUSART();
@@ -31,7 +44,9 @@ int main(void)
     printString("test rtc\r\n");
 	i2cInit();
 	PCF8583_init();
-	printString("test rtc\r\n");
+	lcdInit();
+	lcdDefineChar(cChHeat, 0);
+	DDRD |= _BV(DDD2);
 	UCSR0B |= _BV(RXCIE0);
 	sei();
     while (1) 
@@ -43,12 +58,33 @@ int main(void)
 			PCF8583_set_time(godz, min, sek, hsek);
 			PCF8583_set_date(dzien, miesiac, rok);
 		}
+		sei();
 		PCF8583_get_time((uint8_t *) &godz, (uint8_t *) &min, (uint8_t *) &sek, (uint8_t *) &hsek);
 		PCF8583_get_date((uint8_t *) &dzien, (uint8_t *) &miesiac, (uint16_t *) &rok);
-		float temp = (readTable(dayToTable(dayOfYear(dzien, miesiac))) / ((float) 51)) + (readTable(dayToTable(minuteOfDay(min, godz))) / ((float) 255));
+		float tempThershold = 20 + (readTable(dayToTable(dayOfYear(dzien, miesiac))) / ((float) 51)) + (readTable(minuteToTable(minuteOfDay(min, godz))) / ((float) 255));
+		float temp = ds18b20ReadTemp();
+		static uint8_t heatstate = 0;
+		if(temp < tempThershold) heatstate = 1;
+		if(temp > (tempThershold + 0.1)) heatstate = 0;
+		char buf0[17];
+		char buf1[17];
+		sprintf(buf0, "%02d:%02d %02d-%02d",godz,min,dzien,miesiac);
+		sprintf(buf1, "Tt=%.2f T=%.2f", tempThershold, temp);
+		lcdWriteCommand(LCD_COMMAND_CLEAR);
+		lcdString(buf0);
+		lcdGotoXY(0, 1);
+		lcdString(buf1);
+		lcdGotoXY(15, 0);
+		if(heatstate) {
+			PORTD |= _BV(PORTD2);
+			lcdWriteData(0);
+		} else {
+			PORTD &= ~_BV(PORTD2);
+		}
+		cli();
 		if(printDT) {
 			printDT = 0;
-			printf("%02d:%02d:%02d.%02d %02d-%02d-%04u %0.8f\r\n", godz, min, sek, hsek, dzien, miesiac, rok, temp);
+			printf("%02d:%02d:%02d.%02d %02d-%02d-%04u %0.8f %0.4f\r\n", godz, min, sek, hsek, dzien, miesiac, rok, tempThershold, temp);
 		}
 		sei();
     }

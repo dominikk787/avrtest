@@ -178,23 +178,23 @@ static void PCF8583_hold_on(void)
 /**
  Wyłącza alarm
 */
-static void PCF8583_alarm_off(void)
+/*static void PCF8583_alarm_off(void)
 {
     PCF8583_get_status();
     PCF8583_status &= 0xfb;
     PCF8583_write(0, PCF8583_status);
-}
+}*/
 
 /**
  Załącza alarm
 */
-static void PCF8583_alarm_on(void)
+/*static void PCF8583_alarm_on(void)
 {
   PCF8583_get_status();
   PCF8583_status |= 0x04;
   PCF8583_write(0, PCF8583_status);
 }
-
+*/
 
 /**
  Zapisuje słowo do układu
@@ -243,7 +243,7 @@ static void PCF8583_get_time(uint8_t *hour,uint8_t *min,uint8_t *sec,uint8_t *hs
  \param sec sekunda w formanie BCD
  \param hsec setne części sekundy w formanie BCD
 */
-static void PCF8583_get_time_bcd(uint8_t *hour,uint8_t *min,uint8_t *sec,uint8_t *hsec)
+/*static void PCF8583_get_time_bcd(uint8_t *hour,uint8_t *min,uint8_t *sec,uint8_t *hsec)
 {
     PCF8583_hold_on();
     *hsec=PCF8583_read(1);
@@ -251,7 +251,7 @@ static void PCF8583_get_time_bcd(uint8_t *hour,uint8_t *min,uint8_t *sec,uint8_t
     *min=PCF8583_read(3);
     *hour=PCF8583_read(4) & 0b00111111;
     PCF8583_hold_off();
-}
+}*/
 /**
  Ustawia czas w układzie
  \param hour godzina
@@ -312,13 +312,13 @@ static void PCF8583_set_date(uint8_t day,uint8_t month,uint16_t year)
  \param sec sekunda
  \param hsec setne części sekundy
 */
-static void PCF8583_get_alarm_time(uint8_t *hour, uint8_t *min, uint8_t *sec, uint8_t *hsec)
+/*static void PCF8583_get_alarm_time(uint8_t *hour, uint8_t *min, uint8_t *sec, uint8_t *hsec)
 {
   *hsec=PCF8583_read_bcd(0x9);
   *sec=PCF8583_read_bcd(0xa);
   *min=PCF8583_read_bcd(0xb);
   *hour=PCF8583_read_bcd(0xc);
-}
+}*/
 
 /**
  Ustawia czas alarmu w układzie
@@ -327,35 +327,35 @@ static void PCF8583_get_alarm_time(uint8_t *hour, uint8_t *min, uint8_t *sec, ui
  \param sec sekunda
  \param hsec setne części sekundy
 */
-static void PCF8583_set_alarm_time(uint8_t hour, uint8_t min, uint8_t sec, uint8_t hsec)
+/*static void PCF8583_set_alarm_time(uint8_t hour, uint8_t min, uint8_t sec, uint8_t hsec)
 {
   PCF8583_write_bcd(0x9, hsec);
   PCF8583_write_bcd(0xa, sec);
   PCF8583_write_bcd(0xb, min);
   PCF8583_write_bcd(0xc, hour);
-}
+}*/
 
 /**
  Czyta datê alarmu z układu
  \param day dzień
  \param month miesiąc
 */
-static void PCF8583_get_alarm_date(uint8_t *day, uint8_t *month)
+/*static void PCF8583_get_alarm_date(uint8_t *day, uint8_t *month)
 {
   *day = bcd2bin( PCF8583_read(0xd) & 0x3f );
   *month = bcd2bin( PCF8583_read(0xe) & 0x1f );
-}
+}*/
 
 /**
  Ustawia datę alarmu w układzie
  \param day dzień
  \param month miesiąc
 */
-static void PCF8583_set_alarm_date (uint8_t day, uint8_t month )
+/*static void PCF8583_set_alarm_date (uint8_t day, uint8_t month )
 {
   PCF8583_write_date( 0xd, day, 0 );
   PCF8583_write_bcd( 0xe, month );
-}
+}*/
 
 /*@}*/
 
