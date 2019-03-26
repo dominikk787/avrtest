@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/delay.h>
 #include "PCF8583.h"
 #include "i2c.h"
 #include "USART.h"
@@ -37,6 +38,8 @@ uint8_t cChHeat[8] = {
 	0b11111
 };
 
+volatile uint16_t chargeCycleCount;
+
 int main(void)
 {
     initUSART();
@@ -46,9 +49,16 @@ int main(void)
 	PCF8583_init();
 	lcdInit();
 	lcdDefineChar(cChHeat, 0);
-	DDRD |= _BV(DDD2);
+	TCCR0A |= _BV(COM0A1) | _BV(COM0B1) | _BV(WGM00);
+	TCCR0B |= _BV(CS00);
+	OCR0A = 0;
+	OCR0B = 128;
+	DDRD |= _BV(DDD5) | _BV(DDD6) | _BV(DDD2);
 	UCSR0B |= _BV(RXCIE0);
-	sei();
+	MCUCR |= _BV(PUD);
+	PORTD |= _BV(PORTD7);
+	PCICR |= _BV(PCIE2);
+	PCMSK2 |= _BV(PORTD7);
     while (1) 
     {
 		cli();
@@ -58,14 +68,17 @@ int main(void)
 			PCF8583_set_time(godz, min, sek, hsek);
 			PCF8583_set_date(dzien, miesiac, rok);
 		}
-		sei();
 		PCF8583_get_time((uint8_t *) &godz, (uint8_t *) &min, (uint8_t *) &sek, (uint8_t *) &hsek);
 		PCF8583_get_date((uint8_t *) &dzien, (uint8_t *) &miesiac, (uint16_t *) &rok);
-		float tempThershold = 20 + (readTable(dayToTable(dayOfYear(dzien, miesiac))) / ((float) 51)) + (readTable(minuteToTable(minuteOfDay(min, godz))) / ((float) 255));
+		uint8_t daysin = readTable(minuteToTable(minuteOfDay(min, godz)));
+		float tempThershold = 20 + (readTable(dayToTable(dayOfYear(dzien, miesiac))) / ((float) 51)) + (daysin / ((float) 255));
 		float temp = ds18b20ReadTemp();
+		chargeCycleCount = 0;
+		DDRD |= _BV(DDD7);
+		sei();
 		static uint8_t heatstate = 0;
-		if(temp < tempThershold) heatstate = 1;
-		if(temp > (tempThershold + 0.1)) heatstate = 0;
+		if(temp < (tempThershold - 0.1)) heatstate = 1;
+		if(temp > tempThershold) heatstate = 0;
 		char buf0[17];
 		char buf1[17];
 		sprintf(buf0, "%02d:%02d %02d-%02d",godz,min,dzien,miesiac);
@@ -82,18 +95,35 @@ int main(void)
 			PORTD &= ~_BV(PORTD2);
 		}
 		cli();
+		uint16_t capCycles = chargeCycleCount;
+		if(capCycles < 500) {
+			OCR0A = 128;
+		}else {
+			OCR0A = 0;
+		}
+		OCR0B = (daysin >> 1) + 32;
+		printf("%d,%d\r\n", (uint16_t)(temp * 100), capCycles);
 		if(printDT) {
 			printDT = 0;
-			printf("%02d:%02d:%02d.%02d %02d-%02d-%04u %0.8f %0.4f\r\n", godz, min, sek, hsek, dzien, miesiac, rok, tempThershold, temp);
+			printf("%02d:%02d:%02d.%02d %02d-%02d-%04u %0.8f %0.4f %d\r\n", godz, min, sek, hsek, dzien, miesiac, rok, tempThershold, temp, capCycles);
 		}
-		sei();
     }
+}
+
+ISR(PCINT2_vect) {
+	chargeCycleCount++;                                   /* zliczanie cykli */
+
+	DDRD |= (1 << DDD7);                     /* tryb wyjœcia */
+	_delay_us(1);                                    /* opóŸnienie ³adowania */
+
+	DDRD &= ~(1 << DDD7);                    /* tryb wejœcia */
+	PCIFR |= (1 << PCIF2);            /* wyczyœæ bit przerwania zmiany stanu */
 }
 
 ISR(USART_RX_vect) {
 	char ch = UDR0;
 	static uint8_t chcode = 0;
-	static char dt[25];
+	static uint8_t dt[25];
 	if(chcode == 0) {
 		if(ch == 'g') {
 			printDT = 1;
@@ -101,8 +131,7 @@ ISR(USART_RX_vect) {
 		if(ch == 's') {
 			chcode = 1;
 		}
-	}
-	if(chcode != 0) {
+	}else if(chcode != 0) {
 		switch (chcode) {
 			case 3:
 			case 6:
