@@ -19,6 +19,7 @@
 
 volatile uint8_t printDT = 0;
 volatile uint8_t setDT = 0;
+volatile uint8_t debug = 0;
 
 volatile uint8_t godz, min, sek, hsek;
 volatile uint8_t dzien, miesiac;
@@ -62,12 +63,6 @@ int main(void)
     while (1) 
     {
 		cli();
-		if(setDT) {
-			setDT = 0;
-			printString("\r\n");
-			PCF8583_set_time(godz, min, sek, hsek);
-			PCF8583_set_date(dzien, miesiac, rok);
-		}
 		PCF8583_get_time((uint8_t *) &godz, (uint8_t *) &min, (uint8_t *) &sek, (uint8_t *) &hsek);
 		PCF8583_get_date((uint8_t *) &dzien, (uint8_t *) &miesiac, (uint16_t *) &rok);
 		uint8_t daysin = readTable(minuteToTable(minuteOfDay(min, godz)));
@@ -102,7 +97,13 @@ int main(void)
 			OCR0A = 0;
 		}
 		OCR0B = (daysin >> 1) + 32;
-		printf("%d,%d\r\n", (uint16_t)(temp * 100), capCycles);
+		if(debug) printf("%d,%d\r\n", (uint16_t)(temp * 100), capCycles);
+		if(setDT) {
+			setDT = 0;
+			printString("\r\n");
+			PCF8583_set_time(godz, min, sek, hsek);
+			PCF8583_set_date(dzien, miesiac, rok);
+		}
 		if(printDT) {
 			printDT = 0;
 			printf("%02d:%02d:%02d.%02d %02d-%02d-%04u %0.8f %0.4f %d\r\n", godz, min, sek, hsek, dzien, miesiac, rok, tempThershold, temp, capCycles);
@@ -130,6 +131,9 @@ ISR(USART_RX_vect) {
 		}
 		if(ch == 's') {
 			chcode = 1;
+		}
+		if(ch == 'd') {
+			debug = !debug;
 		}
 	}else if(chcode != 0) {
 		switch (chcode) {
