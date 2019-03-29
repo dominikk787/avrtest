@@ -26,7 +26,6 @@ typedef union {
 void __attribute__((__noreturn__)) __attribute__ ((section (".bootloader"))) bootloader(void);
 void BOOTLOADER_SECTION putch(char ch);
 uint8_t BOOTLOADER_SECTION getch(void);
-void BOOTLOADER_SECTION getNch(uint8_t count);
 void BOOTLOADER_SECTION verifySpace();
 static __attribute__((always_inline)) void writebuffer(addr16_t mybuff, addr16_t address, pagelen_t len);
 static __attribute__((always_inline)) void read_mem(addr16_t address, pagelen_t length);
@@ -45,7 +44,7 @@ void bootloader(void) {
 	UCSR0A |= _BV(U2X0);
 	UCSR0B |= _BV(RXEN0) | _BV(TXEN0);
 	UCSR0C |= _BV(UCSZ01) | _BV(UCSZ00);
-	UBRR0L = 103;
+	UBRR0L = 12;
 	register addr16_t address;
 	register pagelen_t  length;
 	addr16_t buff = {(uint8_t *)(RAMSTART)};
@@ -72,6 +71,12 @@ void bootloader(void) {
 			address.bytes[1] = getch();
 			address.word *= 2; // Convert from word address to byte address
 			verifySpace();
+		}
+		else if(ch == 'a') {
+			// PRINT ADDRESS
+			verifySpace();
+			putch(address.bytes[0]);
+			putch(address.bytes[1]);
 		}
 		/* Write memory, length is big endian and is in bytes */
 		else if(ch == 'P') {
@@ -186,5 +191,5 @@ static inline void read_mem(addr16_t address, pagelen_t length)
 	    // read a Flash byte and increment the address
 	    __asm__ ("lpm %0,Z+\n" : "=r" (ch), "=z" (address.bptr): "1" (address));
 	    putch(ch);
-	} while (--length);
+	} while (length--);
 }

@@ -99,8 +99,8 @@ class Example(wx.Frame):
                         else:
                             b0 = b[0:i]
                         b0 = b0 + bytes([d])
-                        if len(b) > (i + 5):
-                            b0 = b0 + b[(i+4):(len(b))]
+                        if len(b) > (i + 4):
+                            b0 = b0 + b[(i+4):]
                         print(b0)
                         b = b0
                 i = i + 1
@@ -118,7 +118,12 @@ class serialthread(threading.Thread):
         while not self.exit:
             if self.serial.in_waiting > 0:
                 ch = self.serial.read()
-                self.outputtext.SetValue(self.outputtext.GetValue() + hex(ord(ch)) + ' ') 
+                h = format(ord(ch), 'X')
+                if len(h) == 1:
+                    h = '0x0' + h
+                else:
+                    h = '0x' + h
+                self.outputtext.SetValue(self.outputtext.GetValue() + h + ' ') 
 
 def main():
 
