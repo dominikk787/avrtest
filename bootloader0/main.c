@@ -23,6 +23,8 @@ typedef union {
 	uint8_t bytes[2];
 } addr16_t;
 
+
+void __attribute__ ((section (".bootloader"))) startboot(void);
 void __attribute__((__noreturn__)) __attribute__ ((section (".bootloader"))) bootloader(void);
 void BOOTLOADER_SECTION putch(char ch);
 uint8_t BOOTLOADER_SECTION getch(void);
@@ -39,7 +41,13 @@ int main(void)
     }
 }
 
+void startboot(void) {
+	asm("rjmp boot");
+}
+
 void bootloader(void) {
+	startboot();
+	asm("boot:");
 	asm volatile ("clr __zero_reg__");
 	UCSR0A |= _BV(U2X0);
 	UCSR0B |= _BV(RXEN0) | _BV(TXEN0);
@@ -60,10 +68,13 @@ void bootloader(void) {
 			* Note that the references to memory are optimized away.
 			*/
 			if (which == '1') {
+				putch(1);
 				putch(0);
 			} else if (which == '0') {
+				putch(1);
 				putch(8);
-			}
+			} else
+				putch(0);
 		}
 		else if(ch == 'A') {
 			// LOAD ADDRESS
@@ -71,10 +82,12 @@ void bootloader(void) {
 			address.bytes[1] = getch();
 			address.word *= 2; // Convert from word address to byte address
 			verifySpace();
+			putch(0);
 		}
 		else if(ch == 'a') {
 			// PRINT ADDRESS
 			verifySpace();
+			putch(2);
 			putch(address.bytes[0]);
 			putch(address.bytes[1]);
 		}
@@ -94,6 +107,7 @@ void bootloader(void) {
 
 			// Read command terminator, start reply
 			verifySpace();
+			putch(0);
 
 			writebuffer(buff, address, savelength);
 
@@ -104,6 +118,7 @@ void bootloader(void) {
 			GETLENGTH(length);
 
 			verifySpace();
+			putch(length);
 
 			read_mem(address, length);
 		}
@@ -112,6 +127,7 @@ void bootloader(void) {
 		else if(ch == 'S') {
 			// READ SIGN - return what Avrdude wants to hear
 			verifySpace();
+			putch(3);
 			putch(SIGNATURE_0);
 			putch(SIGNATURE_1);
 			putch(SIGNATURE_2);
@@ -119,10 +135,12 @@ void bootloader(void) {
 		else if (ch == 'Q') { /* 'Q' */
 			// Adaboot no-wait mod
 			verifySpace();
+			putch(0);
 		}
 		else {
 			// This covers the response to commands like STK_ENTER_PROGMODE
 			verifySpace();
+			putch(0);
 		}
 		putch(':');
 	}

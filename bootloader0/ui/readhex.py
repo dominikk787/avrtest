@@ -1,6 +1,6 @@
 from intelhex import IntelHex
 import sys
-import subprocess
+from bootclass import MyBoot
 
 def tohex(data):
     h = format(data, 'X')
@@ -25,34 +25,30 @@ iterations = round(size / 128)
 
 hex = IntelHex()
 
-data = ''
+data = []
+
+boot = MyBoot(port, speed)
+boot.open()
 
 for i in range(0, iterations):
-    start = i * 64
-    print(start * 2)
-    start0 = tohex(round(start / 256))
-    start1 = tohex(start % 256)
-    commandsetaddr = 'python serialcli.py ' + port + ' ' + str(speed) + ' "A' + start1 + start0 + ' "'
-    #print(commandsetaddr)
-    commandreadflash = 'python serialcli.py ' + port+ ' ' + str(speed) + ' "R0x000x80 "'
-    #print(commandreadflash)
-    setaddr = subprocess.getoutput(commandsetaddr)
-    #print(setaddr)
-    readflash = subprocess.getoutput(commandreadflash)
-    data = data + readflash[2:-2]
-    #print(readflash)
+    start = i * 128
+    print(start)
+    boot.setAddr(start)
+    print(boot.getAddr())
+    datan = list(boot.readData(128))
+    data = data + datan
+
+boot.close()
     
-g0 = False
+g0 = True
 for i in range(0, size):
-    e = i * 2
-    d = data[e:(e+2)]
-    d = int(d, base=16)
+    d = data[i]
     g1 = False
-    g = (data[e] == 'F') and (data[e+1] == 'F')
-    for f in range(0, 16):
-        if (e + f) >= len(data):
+    g = (data[i] == 255)
+    for f in range(0, 8):
+        if (i + f) >= len(data):
             break
-        if data[(e + f)] != 'F':
+        if data[(i + f)] != 255:
             g1 = True
             break
     if not g0:
@@ -60,8 +56,10 @@ for i in range(0, size):
         g1 = False
     else:
         g0 = g1
+    if not g:
+        g1 = True
     if g1:
         hex[i] = d
 
 hex.write_hex_file(file, byte_count=32)
-print(hex.addresses())
+print(hex.segments())

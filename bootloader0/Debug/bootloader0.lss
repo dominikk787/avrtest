@@ -3,174 +3,193 @@ bootloader0.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  0000025c  2**0
+  0 .data         00000000  00800100  00800100  00000286  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .bootloader   00000160  00007e00  00007e00  000000fc  2**0
+  1 .bootloader   0000018a  00007e00  00007e00  000000fc  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .text         00000088  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  3 .comment      00000030  00000000  00000000  0000025c  2**0
+  3 .comment      00000030  00000000  00000000  00000286  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000028c  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002b8  2**2
                   CONTENTS, READONLY
-  5 .debug_info   000005f4  00000000  00000000  000002cc  2**0
+  5 .debug_info   000005f4  00000000  00000000  000002f8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000005a2  00000000  00000000  000008c0  2**0
+  6 .debug_abbrev 000005a2  00000000  00000000  000008ec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000133  00000000  00000000  00000e62  2**0
+  7 .debug_line   00000133  00000000  00000000  00000e8e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000208  00000000  00000000  00000f95  2**0
+  8 .debug_str    00000208  00000000  00000000  00000fc1  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .bootloader:
 
-00007e00 <putch>:
-    7e00:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
-    7e04:	95 ff       	sbrs	r25, 5
-    7e06:	fc cf       	rjmp	.-8      	; 0x7e00 <putch>
-    7e08:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
-    7e0c:	08 95       	ret
+00007e00 <startboot>:
+    7e00:	19 c0       	rjmp	.+50     	; 0x7e34 <boot>
+    7e02:	08 95       	ret
 
-00007e0e <getch>:
-    7e0e:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
-    7e12:	87 ff       	sbrs	r24, 7
-    7e14:	fc cf       	rjmp	.-8      	; 0x7e0e <getch>
-    7e16:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
-    7e1a:	08 95       	ret
+00007e04 <putch>:
+    7e04:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+    7e08:	95 ff       	sbrs	r25, 5
+    7e0a:	fc cf       	rjmp	.-8      	; 0x7e04 <putch>
+    7e0c:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+    7e10:	08 95       	ret
 
-00007e1c <verifySpace>:
-    7e1c:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7e20:	80 32       	cpi	r24, 0x20	; 32
-    7e22:	11 f0       	breq	.+4      	; 0x7e28 <verifySpace+0xc>
-    7e24:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
-    7e28:	8b e3       	ldi	r24, 0x3B	; 59
-    7e2a:	0c 94 00 3f 	jmp	0x7e00	; 0x7e00 <putch>
+00007e12 <getch>:
+    7e12:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+    7e16:	87 ff       	sbrs	r24, 7
+    7e18:	fc cf       	rjmp	.-8      	; 0x7e12 <getch>
+    7e1a:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+    7e1e:	08 95       	ret
 
-00007e2e <bootloader>:
-    7e2e:	11 24       	eor	r1, r1
-    7e30:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
-    7e34:	82 60       	ori	r24, 0x02	; 2
-    7e36:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
-    7e3a:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-    7e3e:	88 61       	ori	r24, 0x18	; 24
-    7e40:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-    7e44:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
-    7e48:	86 60       	ori	r24, 0x06	; 6
-    7e4a:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
-    7e4e:	8c e0       	ldi	r24, 0x0C	; 12
-    7e50:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
-    7e54:	82 e6       	ldi	r24, 0x62	; 98
-    7e56:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7e5a:	93 e0       	ldi	r25, 0x03	; 3
-    7e5c:	e9 2e       	mov	r14, r25
-    7e5e:	dd 24       	eor	r13, r13
-    7e60:	d3 94       	inc	r13
-    7e62:	25 e0       	ldi	r18, 0x05	; 5
-    7e64:	c2 2e       	mov	r12, r18
-    7e66:	31 e1       	ldi	r19, 0x11	; 17
-    7e68:	b3 2e       	mov	r11, r19
-    7e6a:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7e6e:	87 34       	cpi	r24, 0x47	; 71
-    7e70:	71 f4       	brne	.+28     	; 0x7e8e <bootloader+0x60>
-    7e72:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7e76:	18 2f       	mov	r17, r24
-    7e78:	0e 94 0e 3f 	call	0x7e1c	; 0x7e1c <verifySpace>
-    7e7c:	11 33       	cpi	r17, 0x31	; 49
-    7e7e:	11 f4       	brne	.+4      	; 0x7e84 <bootloader+0x56>
-    7e80:	80 e0       	ldi	r24, 0x00	; 0
-    7e82:	18 c0       	rjmp	.+48     	; 0x7eb4 <bootloader+0x86>
-    7e84:	10 33       	cpi	r17, 0x30	; 48
-    7e86:	09 f0       	breq	.+2      	; 0x7e8a <bootloader+0x5c>
-    7e88:	67 c0       	rjmp	.+206    	; 0x7f58 <bootloader+0x12a>
-    7e8a:	88 e0       	ldi	r24, 0x08	; 8
-    7e8c:	13 c0       	rjmp	.+38     	; 0x7eb4 <bootloader+0x86>
-    7e8e:	81 34       	cpi	r24, 0x41	; 65
-    7e90:	49 f4       	brne	.+18     	; 0x7ea4 <bootloader+0x76>
-    7e92:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7e96:	c8 2f       	mov	r28, r24
-    7e98:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7e9c:	d8 2f       	mov	r29, r24
-    7e9e:	cc 0f       	add	r28, r28
-    7ea0:	dd 1f       	adc	r29, r29
-    7ea2:	58 c0       	rjmp	.+176    	; 0x7f54 <bootloader+0x126>
-    7ea4:	81 36       	cpi	r24, 0x61	; 97
-    7ea6:	49 f4       	brne	.+18     	; 0x7eba <bootloader+0x8c>
-    7ea8:	0e 94 0e 3f 	call	0x7e1c	; 0x7e1c <verifySpace>
-    7eac:	8c 2f       	mov	r24, r28
-    7eae:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7eb2:	8d 2f       	mov	r24, r29
-    7eb4:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7eb8:	4f c0       	rjmp	.+158    	; 0x7f58 <bootloader+0x12a>
-    7eba:	80 35       	cpi	r24, 0x50	; 80
-    7ebc:	59 f5       	brne	.+86     	; 0x7f14 <bootloader+0xe6>
-    7ebe:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7ec2:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7ec6:	f8 2e       	mov	r15, r24
-    7ec8:	00 e0       	ldi	r16, 0x00	; 0
-    7eca:	11 e0       	ldi	r17, 0x01	; 1
-    7ecc:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7ed0:	f8 01       	movw	r30, r16
-    7ed2:	81 93       	st	Z+, r24
-    7ed4:	8f 01       	movw	r16, r30
-    7ed6:	fe 12       	cpse	r15, r30
-    7ed8:	f9 cf       	rjmp	.-14     	; 0x7ecc <bootloader+0x9e>
-    7eda:	0e 94 0e 3f 	call	0x7e1c	; 0x7e1c <verifySpace>
-    7ede:	fe 01       	movw	r30, r28
-    7ee0:	e7 be       	out	0x37, r14	; 55
-    7ee2:	e8 95       	spm
-    7ee4:	07 b6       	in	r0, 0x37	; 55
-    7ee6:	00 fc       	sbrc	r0, 0
-    7ee8:	fd cf       	rjmp	.-6      	; 0x7ee4 <bootloader+0xb6>
-    7eea:	a0 e0       	ldi	r26, 0x00	; 0
-    7eec:	b1 e0       	ldi	r27, 0x01	; 1
-    7eee:	fe 01       	movw	r30, r28
-    7ef0:	8d 91       	ld	r24, X+
-    7ef2:	9d 91       	ld	r25, X+
-    7ef4:	0c 01       	movw	r0, r24
-    7ef6:	d7 be       	out	0x37, r13	; 55
-    7ef8:	e8 95       	spm
-    7efa:	11 24       	eor	r1, r1
-    7efc:	32 96       	adiw	r30, 0x02	; 2
-    7efe:	fa 12       	cpse	r15, r26
-    7f00:	f7 cf       	rjmp	.-18     	; 0x7ef0 <bootloader+0xc2>
-    7f02:	fe 01       	movw	r30, r28
-    7f04:	c7 be       	out	0x37, r12	; 55
-    7f06:	e8 95       	spm
-    7f08:	07 b6       	in	r0, 0x37	; 55
-    7f0a:	00 fc       	sbrc	r0, 0
-    7f0c:	fd cf       	rjmp	.-6      	; 0x7f08 <bootloader+0xda>
-    7f0e:	b7 be       	out	0x37, r11	; 55
+00007e20 <verifySpace>:
+    7e20:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7e24:	80 32       	cpi	r24, 0x20	; 32
+    7e26:	11 f0       	breq	.+4      	; 0x7e2c <verifySpace+0xc>
+    7e28:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+    7e2c:	8b e3       	ldi	r24, 0x3B	; 59
+    7e2e:	0c 94 02 3f 	jmp	0x7e04	; 0x7e04 <putch>
+
+00007e32 <bootloader>:
+    7e32:	00 c0       	rjmp	.+0      	; 0x7e34 <boot>
+
+00007e34 <boot>:
+    7e34:	11 24       	eor	r1, r1
+    7e36:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+    7e3a:	82 60       	ori	r24, 0x02	; 2
+    7e3c:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+    7e40:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+    7e44:	88 61       	ori	r24, 0x18	; 24
+    7e46:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+    7e4a:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+    7e4e:	86 60       	ori	r24, 0x06	; 6
+    7e50:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+    7e54:	8c e0       	ldi	r24, 0x0C	; 12
+    7e56:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+    7e5a:	82 e6       	ldi	r24, 0x62	; 98
+    7e5c:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7e60:	ee 24       	eor	r14, r14
+    7e62:	e3 94       	inc	r14
+    7e64:	95 e0       	ldi	r25, 0x05	; 5
+    7e66:	d9 2e       	mov	r13, r25
+    7e68:	21 e1       	ldi	r18, 0x11	; 17
+    7e6a:	c2 2e       	mov	r12, r18
+    7e6c:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7e70:	87 34       	cpi	r24, 0x47	; 71
+    7e72:	99 f4       	brne	.+38     	; 0x7e9a <boot+0x66>
+    7e74:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7e78:	18 2f       	mov	r17, r24
+    7e7a:	0e 94 10 3f 	call	0x7e20	; 0x7e20 <verifySpace>
+    7e7e:	11 33       	cpi	r17, 0x31	; 49
+    7e80:	21 f4       	brne	.+8      	; 0x7e8a <boot+0x56>
+    7e82:	81 e0       	ldi	r24, 0x01	; 1
+    7e84:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7e88:	79 c0       	rjmp	.+242    	; 0x7f7c <boot+0x148>
+    7e8a:	10 33       	cpi	r17, 0x30	; 48
+    7e8c:	09 f0       	breq	.+2      	; 0x7e90 <boot+0x5c>
+    7e8e:	76 c0       	rjmp	.+236    	; 0x7f7c <boot+0x148>
+    7e90:	81 e0       	ldi	r24, 0x01	; 1
+    7e92:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7e96:	88 e0       	ldi	r24, 0x08	; 8
+    7e98:	72 c0       	rjmp	.+228    	; 0x7f7e <boot+0x14a>
+    7e9a:	81 34       	cpi	r24, 0x41	; 65
+    7e9c:	49 f4       	brne	.+18     	; 0x7eb0 <boot+0x7c>
+    7e9e:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7ea2:	c8 2f       	mov	r28, r24
+    7ea4:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7ea8:	d8 2f       	mov	r29, r24
+    7eaa:	cc 0f       	add	r28, r28
+    7eac:	dd 1f       	adc	r29, r29
+    7eae:	64 c0       	rjmp	.+200    	; 0x7f78 <boot+0x144>
+    7eb0:	81 36       	cpi	r24, 0x61	; 97
+    7eb2:	51 f4       	brne	.+20     	; 0x7ec8 <boot+0x94>
+    7eb4:	0e 94 10 3f 	call	0x7e20	; 0x7e20 <verifySpace>
+    7eb8:	82 e0       	ldi	r24, 0x02	; 2
+    7eba:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7ebe:	8c 2f       	mov	r24, r28
+    7ec0:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7ec4:	8d 2f       	mov	r24, r29
+    7ec6:	5b c0       	rjmp	.+182    	; 0x7f7e <boot+0x14a>
+    7ec8:	80 35       	cpi	r24, 0x50	; 80
+    7eca:	09 f0       	breq	.+2      	; 0x7ece <boot+0x9a>
+    7ecc:	2f c0       	rjmp	.+94     	; 0x7f2c <boot+0xf8>
+    7ece:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7ed2:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7ed6:	f8 2e       	mov	r15, r24
+    7ed8:	00 e0       	ldi	r16, 0x00	; 0
+    7eda:	11 e0       	ldi	r17, 0x01	; 1
+    7edc:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7ee0:	f8 01       	movw	r30, r16
+    7ee2:	81 93       	st	Z+, r24
+    7ee4:	8f 01       	movw	r16, r30
+    7ee6:	fe 12       	cpse	r15, r30
+    7ee8:	f9 cf       	rjmp	.-14     	; 0x7edc <boot+0xa8>
+    7eea:	0e 94 10 3f 	call	0x7e20	; 0x7e20 <verifySpace>
+    7eee:	80 e0       	ldi	r24, 0x00	; 0
+    7ef0:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7ef4:	83 e0       	ldi	r24, 0x03	; 3
+    7ef6:	fe 01       	movw	r30, r28
+    7ef8:	87 bf       	out	0x37, r24	; 55
+    7efa:	e8 95       	spm
+    7efc:	07 b6       	in	r0, 0x37	; 55
+    7efe:	00 fc       	sbrc	r0, 0
+    7f00:	fd cf       	rjmp	.-6      	; 0x7efc <boot+0xc8>
+    7f02:	a0 e0       	ldi	r26, 0x00	; 0
+    7f04:	b1 e0       	ldi	r27, 0x01	; 1
+    7f06:	fe 01       	movw	r30, r28
+    7f08:	8d 91       	ld	r24, X+
+    7f0a:	9d 91       	ld	r25, X+
+    7f0c:	0c 01       	movw	r0, r24
+    7f0e:	e7 be       	out	0x37, r14	; 55
     7f10:	e8 95       	spm
-    7f12:	22 c0       	rjmp	.+68     	; 0x7f58 <bootloader+0x12a>
-    7f14:	82 35       	cpi	r24, 0x52	; 82
-    7f16:	91 f4       	brne	.+36     	; 0x7f3c <bootloader+0x10e>
-    7f18:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7f1c:	0e 94 07 3f 	call	0x7e0e	; 0x7e0e <getch>
-    7f20:	f8 2e       	mov	r15, r24
-    7f22:	0e 94 0e 3f 	call	0x7e1c	; 0x7e1c <verifySpace>
-    7f26:	8e 01       	movw	r16, r28
-    7f28:	f8 01       	movw	r30, r16
-    7f2a:	85 91       	lpm	r24, Z+
-    7f2c:	8f 01       	movw	r16, r30
-    7f2e:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7f32:	8f 2d       	mov	r24, r15
-    7f34:	fa 94       	dec	r15
-    7f36:	81 11       	cpse	r24, r1
-    7f38:	f7 cf       	rjmp	.-18     	; 0x7f28 <bootloader+0xfa>
-    7f3a:	0e c0       	rjmp	.+28     	; 0x7f58 <bootloader+0x12a>
-    7f3c:	83 35       	cpi	r24, 0x53	; 83
-    7f3e:	51 f4       	brne	.+20     	; 0x7f54 <bootloader+0x126>
-    7f40:	0e 94 0e 3f 	call	0x7e1c	; 0x7e1c <verifySpace>
-    7f44:	8e e1       	ldi	r24, 0x1E	; 30
-    7f46:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7f4a:	85 e9       	ldi	r24, 0x95	; 149
-    7f4c:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7f50:	8f e0       	ldi	r24, 0x0F	; 15
-    7f52:	b0 cf       	rjmp	.-160    	; 0x7eb4 <bootloader+0x86>
-    7f54:	0e 94 0e 3f 	call	0x7e1c	; 0x7e1c <verifySpace>
-    7f58:	8a e3       	ldi	r24, 0x3A	; 58
-    7f5a:	0e 94 00 3f 	call	0x7e00	; 0x7e00 <putch>
-    7f5e:	85 cf       	rjmp	.-246    	; 0x7e6a <bootloader+0x3c>
+    7f12:	11 24       	eor	r1, r1
+    7f14:	32 96       	adiw	r30, 0x02	; 2
+    7f16:	fa 12       	cpse	r15, r26
+    7f18:	f7 cf       	rjmp	.-18     	; 0x7f08 <boot+0xd4>
+    7f1a:	fe 01       	movw	r30, r28
+    7f1c:	d7 be       	out	0x37, r13	; 55
+    7f1e:	e8 95       	spm
+    7f20:	07 b6       	in	r0, 0x37	; 55
+    7f22:	00 fc       	sbrc	r0, 0
+    7f24:	fd cf       	rjmp	.-6      	; 0x7f20 <boot+0xec>
+    7f26:	c7 be       	out	0x37, r12	; 55
+    7f28:	e8 95       	spm
+    7f2a:	2b c0       	rjmp	.+86     	; 0x7f82 <boot+0x14e>
+    7f2c:	82 35       	cpi	r24, 0x52	; 82
+    7f2e:	a9 f4       	brne	.+42     	; 0x7f5a <boot+0x126>
+    7f30:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7f34:	0e 94 09 3f 	call	0x7e12	; 0x7e12 <getch>
+    7f38:	f8 2e       	mov	r15, r24
+    7f3a:	0e 94 10 3f 	call	0x7e20	; 0x7e20 <verifySpace>
+    7f3e:	8f 2d       	mov	r24, r15
+    7f40:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f44:	8e 01       	movw	r16, r28
+    7f46:	f8 01       	movw	r30, r16
+    7f48:	85 91       	lpm	r24, Z+
+    7f4a:	8f 01       	movw	r16, r30
+    7f4c:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f50:	8f 2d       	mov	r24, r15
+    7f52:	fa 94       	dec	r15
+    7f54:	81 11       	cpse	r24, r1
+    7f56:	f7 cf       	rjmp	.-18     	; 0x7f46 <boot+0x112>
+    7f58:	14 c0       	rjmp	.+40     	; 0x7f82 <boot+0x14e>
+    7f5a:	83 35       	cpi	r24, 0x53	; 83
+    7f5c:	69 f4       	brne	.+26     	; 0x7f78 <boot+0x144>
+    7f5e:	0e 94 10 3f 	call	0x7e20	; 0x7e20 <verifySpace>
+    7f62:	83 e0       	ldi	r24, 0x03	; 3
+    7f64:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f68:	8e e1       	ldi	r24, 0x1E	; 30
+    7f6a:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f6e:	85 e9       	ldi	r24, 0x95	; 149
+    7f70:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f74:	8f e0       	ldi	r24, 0x0F	; 15
+    7f76:	03 c0       	rjmp	.+6      	; 0x7f7e <boot+0x14a>
+    7f78:	0e 94 10 3f 	call	0x7e20	; 0x7e20 <verifySpace>
+    7f7c:	80 e0       	ldi	r24, 0x00	; 0
+    7f7e:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f82:	8a e3       	ldi	r24, 0x3A	; 58
+    7f84:	0e 94 02 3f 	call	0x7e04	; 0x7e04 <putch>
+    7f88:	71 cf       	rjmp	.-286    	; 0x7e6c <boot+0x38>
 
 Disassembly of section .text:
 
@@ -216,7 +235,7 @@ Disassembly of section .text:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000080 <main>:
-  80:	0e 94 17 3f 	call	0x7e2e	; 0x7e2e <bootloader>
+  80:	0e 94 19 3f 	call	0x7e32	; 0x7e32 <bootloader>
 
 00000084 <_exit>:
   84:	f8 94       	cli
