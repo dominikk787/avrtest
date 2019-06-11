@@ -14,6 +14,8 @@
 #define DS18B20_CONVERT_T 0x44
 #define DS18B20_READ_SCRATCHPAD 0xBE
 
+#define ds18b20IsReady() (oneWireReceiveBit())
+
 struct scratchpad_struct {
 	int16_t temperature;
 	int16_t temperatureAlarm;
@@ -29,3 +31,5 @@ uint8_t oneWireReset();
 uint8_t oneWireComputeCRC8(uint8_t inData, uint16_t seed);
 int8_t oneWireSearchRom(uint8_t * bitPattern, int8_t lastDeviation);
 uint16_t ds18b20ReadTemp(void);
+void ds18b20StartTemp(void);
+uint16_t ds18b20GetTemp(void);

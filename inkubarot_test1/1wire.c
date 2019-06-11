@@ -174,3 +174,30 @@ uint16_t ds18b20ReadTemp(void) {
 	if(crc == scratchpad.crc) return /*(scratchpad.temperature * 100) >> 4*/ scratchpad.temperature;
 	else return 2000;
 }
+
+void ds18b20StartTemp(void) {
+	oneWireReset();
+	oneWireSendByte(OW_SKIP_ROM);
+	oneWireSendByte(DS18B20_CONVERT_T);
+}
+
+uint16_t ds18b20GetTemp(void) {
+	oneWireReset();
+	oneWireSendByte(OW_SKIP_ROM);
+	oneWireSendByte(DS18B20_READ_SCRATCHPAD);
+	//deklaracja zmiennej strukturalnej
+	struct scratchpad_struct scratchpad;
+	//stworzenie wskaünika pokazujπcego na zmiennπ strukturalnπ
+	uint8_t * byte = (uint8_t *) &scratchpad;
+	//odczyt scratchpada i zapis do zmiennej strukturalnej
+	//przez wskaünik bajtowy
+	for (uint8_t i = 0; i < sizeof(scratchpad); i++)
+	byte[i] = oneWireReceiveByte();
+	//weryfikacja CRC
+	int crc = 0;
+	byte = (uint8_t *) &scratchpad;
+	for (uint8_t i = 0; i < sizeof(scratchpad) - 1; i++)
+	crc = oneWireComputeCRC8(byte[i], crc);
+	if(crc == scratchpad.crc) return /*(scratchpad.temperature * 100) >> 4*/ scratchpad.temperature;
+	else return 2000;
+}
