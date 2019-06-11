@@ -1,0 +1,634 @@
+('C:\\Users\\programowanie\\Documents\\Atmel '
+ 'Studio\\7.0\\avrtest\\bootloader0\\ui\\build\\bootloadercontrol\\PYZ-00.pyz',
+ [('ntpath',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ntpath.py',
+   'PYMODULE'),
+  ('_strptime',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\_strptime.py',
+   'PYMODULE'),
+  ('datetime',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\datetime.py',
+   'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\_compat_pickle.py',
+   'PYMODULE'),
+  ('pickle',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pickle.py',
+   'PYMODULE'),
+  ('__future__',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\__future__.py',
+   'PYMODULE'),
+  ('difflib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\difflib.py',
+   'PYMODULE'),
+  ('ast',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ast.py',
+   'PYMODULE'),
+  ('imp',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\imp.py',
+   'PYMODULE'),
+  ('inspect',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\inspect.py',
+   'PYMODULE'),
+  ('cmd',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\cmd.py',
+   'PYMODULE'),
+  ('bdb',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\bdb.py',
+   'PYMODULE'),
+  ('opcode',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\opcode.py',
+   'PYMODULE'),
+  ('dis',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\dis.py',
+   'PYMODULE'),
+  ('codeop',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\codeop.py',
+   'PYMODULE'),
+  ('code',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\code.py',
+   'PYMODULE'),
+  ('glob',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\glob.py',
+   'PYMODULE'),
+  ('shlex',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\shlex.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('importlib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\importlib\\__init__.py',
+   'PYMODULE'),
+  ('pkgutil',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pkgutil.py',
+   'PYMODULE'),
+  ('xml',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax.expatreader',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\sax\\expatreader.py',
+   'PYMODULE'),
+  ('xml.sax.saxutils',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\sax\\saxutils.py',
+   'PYMODULE'),
+  ('urllib.request',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\urllib\\request.py',
+   'PYMODULE'),
+  ('getpass',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\getpass.py',
+   'PYMODULE'),
+  ('nturl2path',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\nturl2path.py',
+   'PYMODULE'),
+  ('ftplib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ftplib.py',
+   'PYMODULE'),
+  ('netrc',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\netrc.py',
+   'PYMODULE'),
+  ('http.cookiejar',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('urllib.response',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\urllib\\response.py',
+   'PYMODULE'),
+  ('urllib.error',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\urllib\\error.py',
+   'PYMODULE'),
+  ('bisect',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\bisect.py',
+   'PYMODULE'),
+  ('xml.sax',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\sax\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax.handler',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\sax\\handler.py',
+   'PYMODULE'),
+  ('xml.sax._exceptions',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\sax\\_exceptions.py',
+   'PYMODULE'),
+  ('xml.sax.xmlreader',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\sax\\xmlreader.py',
+   'PYMODULE'),
+  ('xml.parsers',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\parsers\\__init__.py',
+   'PYMODULE'),
+  ('xml.parsers.expat',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\xml\\parsers\\expat.py',
+   'PYMODULE'),
+  ('plistlib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\plistlib.py',
+   'PYMODULE'),
+  ('platform',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\platform.py',
+   'PYMODULE'),
+  ('urllib.parse',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('tempfile',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tempfile.py',
+   'PYMODULE'),
+  ('tty',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tty.py',
+   'PYMODULE'),
+  ('pydoc_data',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pydoc_data\\__init__.py',
+   'PYMODULE'),
+  ('pydoc_data.topics',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pydoc_data\\topics.py',
+   'PYMODULE'),
+  ('html.entities',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\html\\entities.py',
+   'PYMODULE'),
+  ('html',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\html\\__init__.py',
+   'PYMODULE'),
+  ('ipaddress',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ipaddress.py',
+   'PYMODULE'),
+  ('ssl',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ssl.py',
+   'PYMODULE'),
+  ('http.client',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\http\\client.py',
+   'PYMODULE'),
+  ('mimetypes',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\mimetypes.py',
+   'PYMODULE'),
+  ('socketserver',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\socketserver.py',
+   'PYMODULE'),
+  ('http',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\http\\__init__.py',
+   'PYMODULE'),
+  ('http.server',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\http\\server.py',
+   'PYMODULE'),
+  ('uu',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\uu.py',
+   'PYMODULE'),
+  ('quopri',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\quopri.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('email.parser',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\parser.py',
+   'PYMODULE'),
+  ('email',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('optparse',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\optparse.py',
+   'PYMODULE'),
+  ('calendar',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\calendar.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('email.utils',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\utils.py',
+   'PYMODULE'),
+  ('email.errors',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\errors.py',
+   'PYMODULE'),
+  ('email.header',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\header.py',
+   'PYMODULE'),
+  ('email._policybase',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.base64mime',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\base64mime.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.charset',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\charset.py',
+   'PYMODULE'),
+  ('base64',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\base64.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('hashlib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\hashlib.py',
+   'PYMODULE'),
+  ('random',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\random.py',
+   'PYMODULE'),
+  ('email.generator',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\generator.py',
+   'PYMODULE'),
+  ('email.iterators',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\iterators.py',
+   'PYMODULE'),
+  ('urllib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\urllib\\__init__.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('email.headerregistry',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email.quoprimime',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('email.contentmanager',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.policy',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\policy.py',
+   'PYMODULE'),
+  ('email.message',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\email\\message.py',
+   'PYMODULE'),
+  ('bz2',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\bz2.py',
+   'PYMODULE'),
+  ('lzma',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\lzma.py',
+   'PYMODULE'),
+  ('_compression',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\_compression.py',
+   'PYMODULE'),
+  ('gzip',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\gzip.py',
+   'PYMODULE'),
+  ('tarfile',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tarfile.py',
+   'PYMODULE'),
+  ('py_compile',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\py_compile.py',
+   'PYMODULE'),
+  ('zipfile',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\zipfile.py',
+   'PYMODULE'),
+  ('shutil',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\shutil.py',
+   'PYMODULE'),
+  ('socket',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\socket.py',
+   'PYMODULE'),
+  ('webbrowser',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\webbrowser.py',
+   'PYMODULE'),
+  ('pydoc',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pydoc.py',
+   'PYMODULE'),
+  ('getopt',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\getopt.py',
+   'PYMODULE'),
+  ('pdb',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pdb.py',
+   'PYMODULE'),
+  ('unittest.util',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\util.py',
+   'PYMODULE'),
+  ('unittest.result',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\result.py',
+   'PYMODULE'),
+  ('string',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\string.py',
+   'PYMODULE'),
+  ('logging',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('pprint',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\pprint.py',
+   'PYMODULE'),
+  ('unittest.case',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\case.py',
+   'PYMODULE'),
+  ('unittest.suite',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\suite.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\fnmatch.py',
+   'PYMODULE'),
+  ('unittest.loader',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\loader.py',
+   'PYMODULE'),
+  ('unittest.runner',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\runner.py',
+   'PYMODULE'),
+  ('unittest.main',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\main.py',
+   'PYMODULE'),
+  ('unittest.signals',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\signals.py',
+   'PYMODULE'),
+  ('unittest',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\unittest\\__init__.py',
+   'PYMODULE'),
+  ('doctest',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\doctest.py',
+   'PYMODULE'),
+  ('stat',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\stat.py',
+   'PYMODULE'),
+  ('genericpath',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\genericpath.py',
+   'PYMODULE'),
+  ('posixpath',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\posixpath.py',
+   'PYMODULE'),
+  ('signal',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\signal.py',
+   'PYMODULE'),
+  ('contextlib',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\contextlib.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\_threading_local.py',
+   'PYMODULE'),
+  ('threading',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\threading.py',
+   'PYMODULE'),
+  ('selectors',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\selectors.py',
+   'PYMODULE'),
+  ('_dummy_thread',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\_dummy_thread.py',
+   'PYMODULE'),
+  ('dummy_threading',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\dummy_threading.py',
+   'PYMODULE'),
+  ('subprocess',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\subprocess.py',
+   'PYMODULE'),
+  ('token',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\token.py',
+   'PYMODULE'),
+  ('copy',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\copy.py',
+   'PYMODULE'),
+  ('textwrap',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\textwrap.py',
+   'PYMODULE'),
+  ('struct',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\struct.py',
+   'PYMODULE'),
+  ('gettext',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\gettext.py',
+   'PYMODULE'),
+  ('argparse',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\argparse.py',
+   'PYMODULE'),
+  ('tokenize',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tokenize.py',
+   'PYMODULE'),
+  ('os',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\os.py',
+   'PYMODULE'),
+  ('preferences',
+   'C:\\Users\\programowanie\\Documents\\Atmel '
+   'Studio\\7.0\\avrtest\\bootloader0\\ui\\preferences.py',
+   'PYMODULE'),
+  ('json',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\json\\scanner.py',
+   'PYMODULE'),
+  ('bootclass',
+   'C:\\Users\\programowanie\\Documents\\Atmel '
+   'Studio\\7.0\\avrtest\\bootloader0\\ui\\bootclass.py',
+   'PYMODULE'),
+  ('intelhex',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\intelhex\\__init__.py',
+   'PYMODULE'),
+  ('intelhex.getsizeof',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\intelhex\\getsizeof.py',
+   'PYMODULE'),
+  ('intelhex.compat',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\intelhex\\compat.py',
+   'PYMODULE'),
+  ('serial',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\__init__.py',
+   'PYMODULE'),
+  ('serial.serialjava',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\serialjava.py',
+   'PYMODULE'),
+  ('serial.serialposix',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\serialposix.py',
+   'PYMODULE'),
+  ('serial.serialwin32',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\serialwin32.py',
+   'PYMODULE'),
+  ('ctypes',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('serial.win32',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\win32.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\ctypes\\wintypes.py',
+   'PYMODULE'),
+  ('serial.serialcli',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\serialcli.py',
+   'PYMODULE'),
+  ('serial.serialutil',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\site-packages\\serial\\serialutil.py',
+   'PYMODULE'),
+  ('tkinter.filedialog',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tkinter\\filedialog.py',
+   'PYMODULE'),
+  ('tkinter.commondialog',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tkinter\\commondialog.py',
+   'PYMODULE'),
+  ('tkinter.dialog',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tkinter\\dialog.py',
+   'PYMODULE'),
+  ('tkinter',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tkinter\\__init__.py',
+   'PYMODULE'),
+  ('tkinter.constants',
+   'c:\\users\\programowanie\\documents\\atmel '
+   'studio\\7.0\\avrtest\\bootloader0\\ui\\python\\lib\\tkinter\\constants.py',
+   'PYMODULE')])

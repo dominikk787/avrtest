@@ -1,6 +1,6 @@
 import serial
 import threading
-ser = serial.Serial('COM14',115200,timeout=0)
+ser = serial.Serial('COM14',38400,timeout=0)
 print(ser.name)
 exitFlag = 0
 sendData = -1

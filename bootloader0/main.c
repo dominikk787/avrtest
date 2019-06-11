@@ -34,6 +34,7 @@ static __attribute__((always_inline)) void read_mem(addr16_t address, pagelen_t 
 
 int main(void)
 {
+	asm("sei");
 	bootloader();
     /* Replace with your application code */
     while (1) 
@@ -42,13 +43,26 @@ int main(void)
 }
 
 void startboot(void) {
+	/*asm("brie boot");
+	asm("in r25,0x35");
+	asm("sbrs r25,1");
+	asm("jmp 0");
+	asm("cbi 0x0a,3");
+	asm("sbi 0x0b,3");
+	asm("clt\n");
+	asm("sbis 0x09,3");
+	asm("set");
+	asm("cbi 0x0b,3");
+	asm("brts boot");
+	asm("jmp 0");*/
 	asm("rjmp boot");
 }
 
 void bootloader(void) {
 	startboot();
 	asm("boot:");
-	asm volatile ("clr __zero_reg__");
+	asm volatile ("cli");
+	asm volatile ("clr __zero_reg__\n");
 	UCSR0A |= _BV(U2X0);
 	UCSR0B |= _BV(RXEN0) | _BV(TXEN0);
 	UCSR0C |= _BV(UCSZ01) | _BV(UCSZ00);

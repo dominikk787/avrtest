@@ -120,10 +120,10 @@ class serialthread(threading.Thread):
                 ch = self.serial.read()
                 h = format(ord(ch), 'X')
                 if len(h) == 1:
-                    h = '0x0' + h
+                    h = '0' + h
                 else:
-                    h = '0x' + h
-                self.outputtext.SetValue(self.outputtext.GetValue() + h + ' ') 
+                    h = '' + h
+                self.outputtext.SetValue(self.outputtext.GetValue() + h + '') 
 
 def main():
 

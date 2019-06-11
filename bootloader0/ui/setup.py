@@ -1,0 +1,1 @@
+from distutils.core import setupimport py2exesetup(    windows=['tktest0.py'],	zipfile=None,    options={        "py2exe":{            "optimize": 2,            "includes": ["serial", "intelhex"],            "bundle_files": 1        }    })

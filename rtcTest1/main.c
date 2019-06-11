@@ -45,7 +45,7 @@ int main(void)
 {
     initUSART();
     initUSARTstd();
-    printString("test rtc\r\n");
+    printString("test ");
 	i2cInit();
 	PCF8583_init();
 	lcdInit();
@@ -60,6 +60,7 @@ int main(void)
 	PORTD |= _BV(PORTD7);
 	PCICR |= _BV(PCIE2);
 	PCMSK2 |= _BV(PORTD7);
+	printString("rtc\r\n");
     while (1) 
     {
 		cli();
@@ -68,6 +69,15 @@ int main(void)
 		uint8_t daysin = readTable(minuteToTable(minuteOfDay(min, godz)));
 		float tempThershold = 20 + (readTable(dayToTable(dayOfYear(dzien, miesiac))) / ((float) 51)) + (daysin / ((float) 255));
 		float temp = ds18b20ReadTemp();
+		if(temp == 85.0){
+			OCR0A = 0;
+			PORTD &= ~_BV(PORTD2);
+			while((temp = ds18b20ReadTemp())==85.0) {
+				sei();
+				;
+				cli();
+			}
+		}
 		chargeCycleCount = 0;
 		DDRD |= _BV(DDD7);
 		sei();
@@ -91,7 +101,7 @@ int main(void)
 		}
 		cli();
 		uint16_t capCycles = chargeCycleCount;
-		if(capCycles < 500) {
+		if(capCycles < 470) {
 			OCR0A = 128;
 		}else {
 			OCR0A = 0;
@@ -134,6 +144,9 @@ ISR(USART_RX_vect) {
 		}
 		if(ch == 'd') {
 			debug = !debug;
+		}
+		if(ch == 'b') {
+			asm("jmp 0x7e00");
 		}
 	}else if(chcode != 0) {
 		switch (chcode) {
